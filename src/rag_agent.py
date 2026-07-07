@@ -1,6 +1,6 @@
 from langchain_ollama import OllamaLLM
 from src.config import (LLM_MODEL, OLLAMA_BASE_URL, INDEX_DIR, DB_PATH, FAISS_K, BM25_K,
-                        REASONING, CONTEXT_LENGTH, CHAT_MESSAGES_LIMIT)
+                        REASONING, CONTEXT_LENGTH, CHAT_MESSAGES_LIMIT, TEMPERATURE, SEED)
 from src.embedder import Embedder
 from src.vector_store import VectorStore
 from src.db import Database
@@ -44,7 +44,7 @@ class RAGAgent:
 **Уточняй, если нужно** — если вопрос неоднозначен, задай уточняющий вопрос перед ответом.
 В ответе запрещено использовать markdown форматирование. Опираться на контекст, если он есть.
 Убери всякие оформления и декорирования текста. Желательно приводить источник информации,
-например страницу и название раздела.
+например страницу и название раздела. Ответ обязательно на русском языке.
 
 Контекст:
 {context}

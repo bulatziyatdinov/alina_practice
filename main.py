@@ -1,6 +1,7 @@
 import uuid
 from src.rag_agent import RAGAgent
-
+from rich import print as rprint
+from rich.markdown import Markdown
 
 def main():
     agent = RAGAgent()
@@ -14,7 +15,8 @@ def main():
                 break
 
             response = agent.ask(session_id, query)
-            print(f"\nОтвет: {response}\n")
+            #print(f"\nОтвет: {response}\n")
+            rprint(Markdown('Ответ:' + response))
 
         except KeyboardInterrupt:
             break

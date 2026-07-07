@@ -160,6 +160,8 @@ dependencies = [
     { name = "pymupdf" },
     { name = "python-docx" },
     { name = "rank-bm25" },
+    { name = "requests" },
+    { name = "rich" },
     { name = "unstructured" },
 ]
 
@@ -181,6 +183,8 @@ requires-dist = [
     { name = "pymupdf", specifier = ">=1.28.0" },
     { name = "python-docx", specifier = ">=1.2.0" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
+    { name = "requests", specifier = ">=2.34.2" },
+    { name = "rich", specifier = ">=15.0.0" },
     { name = "unstructured", specifier = ">=0.23.1" },
 ]
 
