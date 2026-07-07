@@ -6,7 +6,7 @@ INDEX_DIR: str = os.path.join(BASE_DIR, "index")
 DB_PATH: str = os.path.join(BASE_DIR, "chat_history.db")
 
 EMBEDDING_MODEL: str = "nomic-embed-text"
-LLM_MODEL: str = "qwen2.5:7b"
+LLM_MODEL: str = "qwen2.5:1.5b"
 OLLAMA_BASE_URL: str = "http://localhost:11434"
 REASONING: bool = False
 CONTEXT_LENGTH: int = 8192

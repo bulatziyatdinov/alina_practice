@@ -1,10 +1,11 @@
 import os
 import pickle
 from typing import List
-from langchain_core.documents import Document
-from langchain_community.vectorstores import FAISS
-from langchain_community.retrievers import BM25Retriever
+
 from langchain_classic.retrievers import EnsembleRetriever
+from langchain_community.retrievers import BM25Retriever
+from langchain_community.vectorstores import FAISS
+from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 
 

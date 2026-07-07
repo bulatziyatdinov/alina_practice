@@ -1,6 +1,6 @@
 import sqlite3
 import uuid
-from typing import List, Dict
+
 
 class Database:
     def __init__(self, db_path: str):
@@ -33,11 +33,12 @@ class Database:
             )
             conn.commit()
 
-    def get_messages(self, session_id: str, limit: int = 10) -> List[Dict[str, str]]:
+    def get_messages(self, session_id: str, limit: int = 10) -> list[dict[str, str]]:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "SELECT role, content FROM messages WHERE session_id = ? ORDER BY created_at ASC LIMIT ?",
+                "SELECT role, content FROM messages "
+                "WHERE session_id = ? ORDER BY created_at ASC LIMIT ?",
                 (session_id, limit)
             )
             rows = cursor.fetchall()

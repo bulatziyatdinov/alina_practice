@@ -11,11 +11,12 @@ def main():
         try:
             print('='*40)
             query = input("Вопрос: ")
+            # todo: clear command
+
             if query.lower() in {"exit", "quit", "выход", "выйти"}:
                 break
 
             response = agent.ask(session_id, query)
-            #print(f"\nОтвет: {response}\n")
             rprint(Markdown('Ответ:' + response))
 
         except KeyboardInterrupt:

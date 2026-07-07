@@ -1,13 +1,15 @@
 import os
+
 from langchain_community.document_loaders import (
-    TextLoader,
-    PyMuPDFLoader,
-    UnstructuredWordDocumentLoader,
-    UnstructuredExcelLoader,
     CSVLoader,
+    PyMuPDFLoader,
+    TextLoader,
+    UnstructuredExcelLoader,
+    UnstructuredWordDocumentLoader,
 )
-from src.config import DATA_DIR, INDEX_DIR
+
 from src.chunker import Chunker
+from src.config import DATA_DIR, INDEX_DIR
 from src.embedder import Embedder
 from src.vector_store import VectorStore
 
