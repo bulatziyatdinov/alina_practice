@@ -1,20 +1,21 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, "data")
-INDEX_DIR = os.path.join(BASE_DIR, "index")
-DB_PATH = os.path.join(BASE_DIR, "chat_history.db")
+BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR: str = os.path.join(BASE_DIR, "data")
+INDEX_DIR: str = os.path.join(BASE_DIR, "index")
+DB_PATH: str = os.path.join(BASE_DIR, "chat_history.db")
 
-EMBEDDING_MODEL = "nomic-embed-text"
-LLM_MODEL = "qwen2.5:7b"
-OLLAMA_BASE_URL = "http://localhost:11434"
-REASONING = False
-CONTEXT_LENGTH = 4096
-CHAT_MESSAGES_LIMIT = 10
+EMBEDDING_MODEL: str = "nomic-embed-text"
+LLM_MODEL: str = "qwen2.5:7b"
+OLLAMA_BASE_URL: str = "http://localhost:11434"
+REASONING: bool = False
+CONTEXT_LENGTH: int = 8192
+CHAT_MESSAGES_LIMIT: int = 10
+TEMPERATURE: float = 0.35
+SEED: int = 42
 
-CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
+CHUNK_SIZE: int = 1000
+CHUNK_OVERLAP: int = 200
 
-# Настройки гибридного поиска (количество возвращаемых документов)
-FAISS_K = 5
-BM25_K = 5
+FAISS_K: int = 10
+BM25_K: int = 10
