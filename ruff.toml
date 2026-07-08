@@ -6,10 +6,6 @@ extend-exclude = [
     ".venv",
     "env",
     ".venv",
-    "build",
-    "dist",
-    "resources",
-    "trash",
 ]
 
 [lint]
@@ -17,15 +13,13 @@ select = [
     "E",    # pycodestyle errors
     "F",    # Pyflakes
     "I",    # isort
-    #"UP",   # pyupgrade
-    #"COM",  # flake8-commas
     "B",    # flake8-bugbear
     "A",    # flake8-builtins
     "RUF",  # ruff
 ]
 
 ignore = [
-    #"E501",
+    "RUF001",
 ]
 
 preview = true

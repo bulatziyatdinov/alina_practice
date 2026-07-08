@@ -1,5 +1,3 @@
-from typing import List
-
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -13,5 +11,5 @@ class Chunker:
             chunk_overlap=CHUNK_OVERLAP
         )
 
-    def split(self, documents: List[Document]) -> List[Document]:
+    def split(self, documents: list[Document]) -> list[Document]:
         return self.splitter.split_documents(documents)

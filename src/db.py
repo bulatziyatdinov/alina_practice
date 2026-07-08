@@ -28,7 +28,8 @@ class Database:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "INSERT INTO messages (id, session_id, role, content) VALUES (?, ?, ?, ?)",
+                "INSERT INTO messages (id, session_id, role, content) "
+                "VALUES (?, ?, ?, ?)",
                 (msg_id, session_id, role, content)
             )
             conn.commit()
@@ -42,4 +43,12 @@ class Database:
                 (session_id, limit)
             )
             rows = cursor.fetchall()
-            return [{"role": row[0], "content": row[1]} for row in rows]
+            return [{'role': row[0], 'content': row[1]} for row in rows]
+
+    def delete_messages(self, session_id: str) -> None:
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                'DELETE FROM messages WHERE session_id = ?',
+                (session_id,)
+            )
