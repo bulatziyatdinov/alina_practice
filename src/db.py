@@ -23,7 +23,7 @@ class Database:
             )
             conn.commit()
 
-    def add_message(self, session_id: str, role: str, content: str):
+    def add_message(self, session_id: str, role: str, content: str) -> None:
         msg_id = str(uuid.uuid4())
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()

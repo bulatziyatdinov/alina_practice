@@ -158,6 +158,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "pymupdf" },
+    { name = "pytelegrambotapi" },
     { name = "python-docx" },
     { name = "python-dotenv" },
     { name = "rank-bm25" },
@@ -182,6 +183,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=3.0.3" },
     { name = "pymupdf", specifier = ">=1.28.0" },
+    { name = "pytelegrambotapi", specifier = ">=4.34.0" },
     { name = "python-docx", specifier = ">=1.2.0" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
@@ -1910,6 +1912,19 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/28/01/e445a77e784a5b0047a2c30b263630dfaa57318ff3196e6ad3093dca6929/pypdfium2-5.11.0-py3-none-win32.whl", hash = "sha256:324054f36acf6bea42a9d2534eb407da2e312dba746d955c9fd7e324bc160898", size = 3645281, upload-time = "2026-06-29T11:11:33.691Z" },
     { url = "https://files.pythonhosted.org/packages/73/d4/8b8af6eedbc5c8af49817d8f37c2e55be8a2c7f75fca9bee78efbfeb40f6/pypdfium2-5.11.0-py3-none-win_amd64.whl", hash = "sha256:d3b698e7b51bdf2d633cc834395677319e1d66757896b30c632dfac7d7236c81", size = 3778234, upload-time = "2026-06-29T11:11:35.64Z" },
     { url = "https://files.pythonhosted.org/packages/c5/a7/657503553694c70fba0aa5d213144d80401611c82e0205f43f1ff39f40af/pypdfium2-5.11.0-py3-none-win_arm64.whl", hash = "sha256:897788d71b740752e29875856c369fdb52283f609aecf2355f0473db05dfc1b6", size = 3567726, upload-time = "2026-06-29T11:11:38.689Z" },
+]
+
+[[package]]
+name = "pytelegrambotapi"
+version = "4.34.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/81/6d/11705e63ac5922bddb8fe93dbe6010b2f46e1366c1e534d0c3866b46140d/pytelegrambotapi-4.34.0.tar.gz", hash = "sha256:ec56b339690c4f4a2c867cc677d01a9bfa9e4af58227a54596e2f366c0947df9", size = 1388791, upload-time = "2026-06-03T20:25:28.851Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/e9/18d614a0846a33639dc88c561122e665209798196f074f7dbca60c6145a0/pytelegrambotapi-4.34.0-py3-none-any.whl", hash = "sha256:470bec408033ceebe089cf968cc92cc1ff2d79b912ee5a983a07926ff79d4053", size = 317168, upload-time = "2026-06-03T20:25:27.425Z" },
 ]
 
 [[package]]

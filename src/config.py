@@ -14,6 +14,8 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
 LLM_MODEL = os.getenv("LLM_MODEL", "qwen2.5:1.5b")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+
 REASONING = os.getenv("REASONING", "False").lower() == "true"
 CONTEXT_LENGTH = int(os.getenv("CONTEXT_LENGTH", "8192"))
 CHAT_MESSAGES_LIMIT = int(os.getenv("CHAT_MESSAGES_LIMIT", "10"))
@@ -26,3 +28,5 @@ CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "200"))
 
 FAISS_K = int(os.getenv("FAISS_K", "8"))
 BM25_K = int(os.getenv("BM25_K", "8"))
+
+LOGGER_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

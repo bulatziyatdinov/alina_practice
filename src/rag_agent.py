@@ -46,14 +46,19 @@ class RAGAgent:
              return f.read()
 
     def ask(self, session_id: str, query: str) -> str:
-        query = query.strip()
-        docs = self.retriever.invoke(query)
-        context = "\n\n".join([doc.page_content for doc in docs])
-
         history = self.db.get_messages(session_id, CHAT_MESSAGES_LIMIT)
+        history_queries = ". ".join(
+            [msg["content"] for msg in history if msg["role"] == "user"][-3:]
+        )
         history_text = "\n".join(
             [f"{msg['role']}: {msg['content']}" for msg in history]
         )
+
+        query = query.strip()
+
+        docs = self.retriever.invoke(f"{history_queries}. {query}")
+
+        context = "\n\n".join([doc.page_content for doc in docs])
 
         prompt = (self.base_prompt +
                   f"Контекст: {context} "

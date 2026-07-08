@@ -1,3 +1,4 @@
+import time
 import uuid
 
 from rich import print as rprint
@@ -15,7 +16,7 @@ def main():
         "Команды:\n"
         "-Выход: exit, quit, выход, выйти\n"
         "-Очистка памяти: clear, очистка, очистить\n"
-        "-Помощь: info, help, информация, помощь\n"
+        "-Помощь: info, help, информация, помощь"
     )
 
     while True:
@@ -25,20 +26,26 @@ def main():
 
             query_processed = query.lower().strip("\\/")
             if query_processed in {"exit", "quit", "выход", "выйти"}:
+                print('[INFO] Приложение закрывается')
                 break
             elif query_processed in {"clear", "очистка", "очистить"}:
                 agent.clear_history(session_id)
+                print("Контекст очищен")
                 continue
             elif query_processed in {"info", "help", "информация", "помощь"}:
                 print("Команды:"
                       "\n  Выход: exit, quit, выход, выйти"
                       "\n  Очистка памяти: clear, очистка, очистить"
-                      "\n  Помощь: info, help, информация, помощь"
+                      "\n  Помощь: info, help, инфо, информация, помощь"
                 )
                 continue
 
+            start_time = time.time()
             response = agent.ask(session_id, query)
-            rprint(Markdown("[ОТВЕТ] " + response))
+            elapsed = time.time() - start_time
+
+            rprint(Markdown(
+                "[ОТВЕТ] " + response + f"\n\nВремя ответа: {elapsed:.3f} секунд"))
 
         except KeyboardInterrupt:
             break
