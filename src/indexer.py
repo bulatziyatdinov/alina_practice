@@ -52,6 +52,8 @@ class Indexer:
 
         chunks = self.chunker.split(documents)
 
+        os.makedirs(INDEX_DIR, exist_ok=True)
+
         debug_path = os.path.join(INDEX_DIR, "chunks_debug.txt")
         with open(debug_path, 'w', encoding='utf-8') as f:
             for i, chunk in enumerate(chunks, 1):

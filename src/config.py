@@ -10,8 +10,6 @@ DATA_DIR: str = os.path.join(BASE_DIR, "data")
 INDEX_DIR: str = os.path.join(BASE_DIR, "index")
 DB_PATH: str = os.path.join(BASE_DIR, "chat.db")
 
-os.mkdir(INDEX_DIR)
-
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
 LLM_MODEL = os.getenv("LLM_MODEL", "qwen2.5:1.5b")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
