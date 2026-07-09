@@ -42,7 +42,11 @@ def start(message):
 def clear_command(message):
     user_id = str(message.from_user.id)
     rag_agent.clear_history(user_id)
-    bot.reply_to(message, "История очищена.")
+    bot.set_message_reaction(
+        message.chat.id,
+        message.message_id,
+        reaction=[telebot.types.ReactionTypeEmoji("👍")]
+    )
 
 
 @bot.message_handler(commands=['model'])
