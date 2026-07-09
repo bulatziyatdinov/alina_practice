@@ -2,11 +2,12 @@ from langchain_ollama import OllamaLLM
 
 from src.config import (
     BM25_K,
+    BM25_WEIGHT,
     CHAT_MESSAGES_LIMIT,
     CONTEXT_LENGTH,
     DB_PATH,
-    EMBEDDING_MODEL,
     FAISS_K,
+    FAISS_WEIGHT,
     INDEX_DIR,
     LLM_MODEL,
     NUM_PREDICT,
@@ -38,7 +39,9 @@ class RAGAgent:
             embeddings=embeddings,
             index_dir=INDEX_DIR,
             faiss_k=FAISS_K,
-            bm25_k=BM25_K
+            bm25_k=BM25_K,
+            faiss_w=FAISS_WEIGHT,
+            bm25_w=BM25_WEIGHT,
         )
         self.base_prompt = self._get_prompt()
 
@@ -57,10 +60,7 @@ class RAGAgent:
 
         query = query.strip()
 
-        try:
-            docs = self.retriever.invoke(f"{history_queries}. {query}")
-        except ConnectionError:
-            return f"Проблема связи с эмбеддинг моделью {EMBEDDING_MODEL}"
+        docs = self.retriever.invoke(f"{history_queries}. {query}")
 
         context = "\n\n".join([doc.page_content for doc in docs])
 
@@ -70,10 +70,7 @@ class RAGAgent:
                   f"Вопрос пользователя: {query}\n"
                   f"Напиши только ответ на вопрос пользователя""")
 
-        try:
-            response = self.llm.invoke(prompt)
-        except ConnectionError:
-            return f"Проблема связи с моделью {LLM_MODEL}"
+        response = self.llm.invoke(prompt)
 
         self.db.add_message(session_id, "user", query)
         self.db.add_message(session_id, "assistant", response)

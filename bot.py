@@ -15,6 +15,14 @@ if not TELEGRAM_BOT_TOKEN:
     raise ValueError("TELEGRAM_BOT_TOKEN не задан")
 
 bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
+
+bot.set_my_commands([
+    telebot.types.BotCommand("start", "Запустить бота / справка"),
+    telebot.types.BotCommand("help", "Показать справку"),
+    telebot.types.BotCommand("clear", "Очистить историю диалога"),
+    telebot.types.BotCommand("model", "Показать текущую модель")
+])
+
 rag_agent = RAGAgent()
 
 
@@ -48,7 +56,7 @@ def model_command(message):
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
-    query = message.text.strip()
+    query = message.text.strip().replace('`', '')
     if not query:
         return
 
@@ -67,4 +75,7 @@ def handle_message(message):
 
 if __name__ == "__main__":
     logger.info("Бот запущен")
-    bot.polling(non_stop=True, skip_pending=True)
+    bot.polling(
+        non_stop=True,
+        skip_pending=True
+    )

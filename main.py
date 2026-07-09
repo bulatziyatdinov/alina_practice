@@ -41,11 +41,14 @@ def main():
                 continue
 
             start_time = time.time()
-            response = agent.ask(session_id, query)
+            try:
+                response = agent.ask(session_id, query)
+                rprint(Markdown("[ОТВЕТ] " + response))
+            except Exception:
+                print("[ОШИБКА] Нет связи с моделями Ollama")
             elapsed = time.time() - start_time
+            print(f"Время ответа: {elapsed:.3f} секунд")
 
-            rprint(Markdown(
-                "[ОТВЕТ] " + response + f"\n\nВремя ответа: {elapsed:.3f} секунд"))
 
         except KeyboardInterrupt:
             break

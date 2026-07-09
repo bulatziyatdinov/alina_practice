@@ -26,7 +26,9 @@ NUM_PREDICT = int(os.getenv("NUM_PREDICT", "2048"))
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1500"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "200"))
 
-FAISS_K = int(os.getenv("FAISS_K", "8"))
-BM25_K = int(os.getenv("BM25_K", "8"))
+FAISS_K = int(os.getenv("FAISS_K", "10"))
+BM25_K = int(os.getenv("BM25_K", "10"))
+FAISS_WEIGHT = float(os.getenv("FAISS_WEIGHT", "0.6"))
+BM25_WEIGHT = float(os.getenv("BM25_WEIGHT", "0.4"))
 
 LOGGER_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
