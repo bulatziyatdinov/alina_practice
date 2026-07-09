@@ -5,6 +5,7 @@ from src.config import (
     CHAT_MESSAGES_LIMIT,
     CONTEXT_LENGTH,
     DB_PATH,
+    EMBEDDING_MODEL,
     FAISS_K,
     INDEX_DIR,
     LLM_MODEL,
@@ -56,17 +57,23 @@ class RAGAgent:
 
         query = query.strip()
 
-        docs = self.retriever.invoke(f"{history_queries}. {query}")
+        try:
+            docs = self.retriever.invoke(f"{history_queries}. {query}")
+        except ConnectionError:
+            return f"Проблема связи с эмбеддинг моделью {EMBEDDING_MODEL}"
 
         context = "\n\n".join([doc.page_content for doc in docs])
 
         prompt = (self.base_prompt +
-                  f"Контекст: {context} "
-                  f"История диалога (если есть): {history_text} "
-                  f"Вопрос пользователя: {query} "
+                  f"Контекст: {context}\n"
+                  f"История диалога (если есть): {history_text}\n"
+                  f"Вопрос пользователя: {query}\n"
                   f"Напиши только ответ на вопрос пользователя""")
 
-        response = self.llm.invoke(prompt)
+        try:
+            response = self.llm.invoke(prompt)
+        except ConnectionError:
+            return f"Проблема связи с моделью {LLM_MODEL}"
 
         self.db.add_message(session_id, "user", query)
         self.db.add_message(session_id, "assistant", response)
